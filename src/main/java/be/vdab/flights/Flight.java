@@ -20,8 +20,6 @@ public class Flight {
     private String departure;
     @Column (nullable = false)
     private String destination;
-    @Column (nullable = false)
-    private double price;
 
 
     public String getDeparture() {

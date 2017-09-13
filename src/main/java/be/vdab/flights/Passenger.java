@@ -1,9 +1,6 @@
 package be.vdab.flights;
 
-import org.yaml.snakeyaml.events.Event;
-
 import javax.persistence.*;
-import java.nio.MappedByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,17 +19,21 @@ public class Passenger {
     @Column(nullable = false)
     String firstName;
     @Column(nullable = false)
-    String lastname;
+    String lastName;
     int frequentFlyer;
 
     @OneToMany(mappedBy = "passenger")   // field niet de classe!
     private List<Ticket> ticketList = new ArrayList<>();
 
+    /**
+     * Used by JPA.
+     */
+    Passenger() {
+    }
 
-
-    public Passenger(String firstName, String lastname) {
+    public Passenger(String firstName, String lastName) {
         this.firstName = firstName;
-        this.lastname = lastname;
+        this.lastName = lastName;
     }
 
 
@@ -53,12 +54,12 @@ public class Passenger {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getFrequentFlyer() {
@@ -71,9 +72,9 @@ public class Passenger {
 
 
 
-    public Passenger(String firstName, String lastname, int frequentFlyer) {
+    public Passenger(String firstName, String lastName, int frequentFlyer) {
         this.firstName = firstName;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.frequentFlyer = frequentFlyer;
     }
 

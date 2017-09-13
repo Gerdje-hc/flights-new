@@ -1,7 +1,5 @@
 package be.vdab.flights;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -40,6 +38,13 @@ public class PassengerRepository {
     }
     public void save (Passenger p){    // Passengers kunnen nu aangemaakt worden via de entity manager em - persist > is doorsturen
         em.persist(p);
+
+
+    }
+
+    public List<Passenger> findall(){
+       return em.createQuery("select p from Passenger p ORDER BY first_name", Passenger.class).getResultList();
+
     }
 
 

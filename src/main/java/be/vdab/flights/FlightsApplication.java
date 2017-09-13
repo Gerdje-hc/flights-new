@@ -4,6 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication
 public class FlightsApplication {
 
@@ -38,6 +41,12 @@ public class FlightsApplication {
 		t.setPassenger(p);
 		t.setFlight(f);
 		tr.save(t);
+
+
+		List<Passenger>printList = pr.findall();
+		for (Passenger passenger : printList) {
+			System.out.println(passenger.getFirstName());
+		}
 
 
 
