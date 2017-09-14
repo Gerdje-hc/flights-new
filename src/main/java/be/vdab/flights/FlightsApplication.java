@@ -43,17 +43,19 @@ public class FlightsApplication {
 		tr.save(t);
 
 
-		List<Passenger>printList = pr.findall();
+		List<Passenger>printList = pr.findAll();
 		for (Passenger passenger : printList) {
 			System.out.println(passenger.getFirstName());
 		}
 
+		// Printout van de vlucht nummers
 
+		System.out.println(fr.readByFlightNumber("FL2.74B"));
+		System.out.println(fr.readByFlightNumber("FL3.6FB"));
 
-
-
-
-
+		List<Ticket> ticketsList = tr.findByPrice(580.50);
+		System.out.println(ticketsList.get(0).getFlight().getFlightNumber());
 
 	}
+
 }

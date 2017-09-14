@@ -1,27 +1,13 @@
 package be.vdab.flights;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import javax.persistence.Id;
+import java.util.List;
 
-/**
- * Created by vdabcursist on 12/09/2017.
- */
+public interface TicketRepository extends JpaRepository<Ticket, Integer> {   // -> de Integer is de primery ke van Ticket
 
-@Repository
-@Transactional
-public class TicketRepository {
-
-    @PersistenceContext           // Spring kan hiermede automatisch de juiste Entity Manager aanmaken wanneer nodig
-    private EntityManager em;    // aanmaken van een Entity Manager
-
-
-    public void save (Ticket t){    // Tickets kunnen nu aangemaakt worden via de entity manager em - persist > is doorsturen
-        em.persist(t);
-    }
+   List<Ticket> findByPrice (double price); // dit wordt opgeroepen
 
 
 }

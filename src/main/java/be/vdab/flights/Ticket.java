@@ -8,12 +8,29 @@ import javax.persistence.*;
 
 @Entity
 public class Ticket {
+    public Ticket() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     @Column(nullable = false)
+
     double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Ticket(double price) {
+        this.price = price;
+    }
+
+
 
     public Flight getFlight() {
         return flight;
@@ -23,9 +40,22 @@ public class Ticket {
         this.flight = flight;
     }
 
+
+
     public Passenger getPassenger() {
         return passenger;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
 
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
@@ -38,26 +68,7 @@ public class Ticket {
     @ManyToOne
     private Passenger passenger;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-
-    public Ticket(double price) {
-        this.price = price;
-    }
 
 
 }

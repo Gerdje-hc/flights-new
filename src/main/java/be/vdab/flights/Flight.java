@@ -13,6 +13,9 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    public Flight() {
+    }
+
     @Column(unique = true, nullable = false )
     private String flightNumber; //uniek
 
@@ -63,5 +66,18 @@ public class Flight {
 
     public void setFlightNumber(String flightNumber) {
         this.flightNumber = flightNumber;
+    }
+
+
+    // de ToString zal alle querys automatisch afprinten in een String. Kan je genereren zoals een constructor en getters en setters
+    @Override
+
+    public String toString() {
+        return "Flight{" +
+                "id=" + id +
+                ", flightNumber='" + flightNumber + '\'' +
+                ", departure='" + departure + '\'' +
+                ", destination='" + destination + '\'' +
+                '}';
     }
 }

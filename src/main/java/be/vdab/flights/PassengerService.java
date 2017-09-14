@@ -15,7 +15,7 @@ public class PassengerService {
     @Autowired
     private PassengerRepository passengerRepository;
 
-    public List <String> getAll(){
+    public List <Passenger> getAll(){
         return passengerRepository.findAll();
 
     }
