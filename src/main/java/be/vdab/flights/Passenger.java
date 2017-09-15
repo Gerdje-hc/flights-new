@@ -1,6 +1,11 @@
 package be.vdab.flights;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +51,7 @@ public class Passenger {
         this.id = id;
     }
 
+
     public String getFirstName() {
         return firstName;
     }
@@ -54,6 +60,7 @@ public class Passenger {
         this.firstName = firstName;
     }
 
+    @JsonProperty ("abc")  // dit gaat de naam van de tabel veranderen in de weergave
     public String getLastName() {
         return lastName;
     }
@@ -62,9 +69,11 @@ public class Passenger {
         this.lastName = lastName;
     }
 
+    @JsonIgnore   // zal deze fileld niet weergeven in de browser
     public int getFrequentFlyer() {
         return frequentFlyer;
     }
+
 
     public void setFrequentFlyer(int frequentFlyer) {
         this.frequentFlyer = frequentFlyer;
@@ -82,6 +91,11 @@ public class Passenger {
         ticketList.add(ticket);
     }
 
-
+        // deze Annotatie zorgt ervoor dat de Passagiers niet worden weergegeven met de tickets
+        // om de error te vermijden als je een Passagier gaat deleten (PassengerRestControler)
+    @JsonIgnore
+    public List<Ticket> getTicketList(){
+        return ticketList;
+    }
     }
 

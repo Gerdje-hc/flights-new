@@ -59,6 +59,7 @@ public class Ticket {
 
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
+
         passenger.addTicket(this);
     }
 
